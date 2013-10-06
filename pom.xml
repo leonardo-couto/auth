@@ -3,14 +3,14 @@
   <groupId>com.bewkrop</groupId>
   <artifactId>auth</artifactId>
   <packaging>jar</packaging>
-  <version>0.0.1</version>
+  <version>0.0.2-SNAPSHOT</version>
   <name>auth</name>
 
   <scm>
     <connection>scm:git:git://github.com/leonardo-couto/auth.git</connection>
     <developerConnection>scm:git:git@github.com:leonardo-couto/auth.git</developerConnection>
     <url>http://github.com/leonardo-couto/auth</url>
-    <tag>auth-0.0.1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <properties>

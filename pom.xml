@@ -7,6 +7,12 @@
   <version>1.0-SNAPSHOT</version>
   <name>auth</name>
 
+  <scm>
+    <connection>scm:git:git://github.com/leonardo-couto/auth.git</connection>
+    <developerConnection>scm:git:git@github.com:leonardo-couto/auth.git</developerConnection>
+    <url>http://github.com/leonardo-couto/auth</url>
+  </scm>
+
   <properties>
     <version.jaxrs>2.0</version.jaxrs>
     <version.annotation>1.2</version.annotation>

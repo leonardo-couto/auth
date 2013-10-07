@@ -1,16 +1,14 @@
-package com.bewkrop.auth.web;
-
-import java.security.Principal;
+package com.bewkrop.auth.web.filter;
 
 import javax.ws.rs.core.SecurityContext;
 
-import com.bewkrop.auth.user.UserRequest;
+import com.bewkrop.auth.user.Principal;
 
 public class AuthContext implements SecurityContext {
 	
-	private final UserRequest user;
+	private final Principal user;
 	
-	public AuthContext(UserRequest user) {
+	public AuthContext(Principal user) {
 		this.user = user;
 	}
 

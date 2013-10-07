@@ -1,4 +1,4 @@
-package com.bewkrop.auth.web;
+package com.bewkrop.auth.web.filter;
 
 import java.io.IOException;
 

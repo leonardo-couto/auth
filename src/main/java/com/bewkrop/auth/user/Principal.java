@@ -1,15 +1,13 @@
 package com.bewkrop.auth.user;
 
-import java.security.Principal;
-
-public class UserRequest implements Principal {
+public class Principal implements java.security.Principal {
 	
 	private static final String CSV_REGEX = "[\\,|;]";
 	
 	private final User user;
 	private final boolean https;
 
-	public UserRequest(User user, boolean https) {
+	public Principal(User user, boolean https) {
 		this.user = user;
 		this.https = https;
 	}

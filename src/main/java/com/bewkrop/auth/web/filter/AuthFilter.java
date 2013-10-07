@@ -1,4 +1,4 @@
-package com.bewkrop.auth.web;
+package com.bewkrop.auth.web.filter;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -7,17 +7,17 @@ import java.net.URLEncoder;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bewkrop.auth.user.User;
-import com.bewkrop.auth.user.UserRequest;
-import com.bewkrop.auth.user.UserService;
-import com.bewkrop.auth.user.UserServiceFactory;
+import com.bewkrop.auth.user.Principal;
+import com.bewkrop.auth.user.UserRepository;
+import com.bewkrop.auth.user.UserRepositoryFactory;
 
-
-// TODO: fazer o release no maven (com source) e colocar como dependencia no outro projeto
 // TODO: framework generica o suficiente para poder usar de outras formas (jaas?)
+@WebFilter
 public class AuthFilter extends HttpFilter {
 
 	private static final String LOGIN_PAGE = "/auth/login.html?next=%s";
@@ -25,20 +25,20 @@ public class AuthFilter extends HttpFilter {
 	
 	public static final String USER_PROPERTY = "hTby3zf8K7F46LF4aT8tzfyx8uChhvVJ";
 	
-	private UserServiceFactory factory = null;
+	private UserRepositoryFactory factory = null;
 	
 	@Override
 	public void init(FilterConfig filterConfig) {
 		// TODO: colocar url de login, (falha de login? ou configurar a url de falha de login no servlet?)
 		super.init(filterConfig);
-		this.factory = UserServiceFactory.instance();
+		this.factory = UserRepositoryFactory.instance();
 	}
 
 	@Override
 	public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
-		UserService service = this.factory.build();
+		UserRepository service = this.factory.build();
 		
 		String key = request.getParameter("key");
 		String password = request.getParameter("password");
@@ -60,7 +60,7 @@ public class AuthFilter extends HttpFilter {
 		
 		// AUTHENTICATED
 		boolean isSecure = request.isSecure(); // should I allow not secure connection?
-		UserRequest userRequest = new UserRequest(user, isSecure);
+		Principal userRequest = new Principal(user, isSecure);
 		request.setAttribute(USER_PROPERTY, userRequest);		
 		chain.doFilter(request, response);
 		

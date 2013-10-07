@@ -3,32 +3,32 @@ package com.bewkrop.auth.user;
 import java.io.IOException;
 import java.util.Properties;
 
-public class UserServiceFactory {
+public class UserRepositoryFactory {
 	
 	private static final String PROP_KEY = "user.service.class";
-	private static UserServiceFactory factory = new UserServiceFactory();
+	private static UserRepositoryFactory factory = new UserRepositoryFactory();
 	
-	private final UserService service;
+	private final UserRepository service;
 	
-	private UserServiceFactory() {
+	private UserRepositoryFactory() {
 		this.service = getInstance();
 	}
 	
-	public UserService build() {
+	public UserRepository build() {
 		return this.service;
 	}
 	
-	public static UserServiceFactory instance() {
+	public static UserRepositoryFactory instance() {
 		return factory;
 	}
 	
-	private static UserService getInstance() {
+	private static UserRepository getInstance() {
 		String name = getName();
 		
 		try {
-			ClassLoader classLoader = UserServiceFactory.class.getClassLoader();
+			ClassLoader classLoader = UserRepositoryFactory.class.getClassLoader();
 			Class<?> clazz = classLoader.loadClass(name);		
-			return (UserService) clazz.newInstance();
+			return (UserRepository) clazz.newInstance();
 			
 		} catch (ReflectiveOperationException e) {
 			String error = "Error trying to create a new instance of class '%s'";

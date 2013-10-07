@@ -1,6 +1,6 @@
 package com.bewkrop.auth.user;
 
-public interface UserService {
+public interface UserRepository {
 	
 	public User get(String key);
 	

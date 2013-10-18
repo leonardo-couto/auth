@@ -5,6 +5,10 @@ public class AuthToken {
 	private String key;
 	private boolean authenticated;
 	
+	public AuthToken() {
+		// empty
+	}
+	
 	public AuthToken(String key, boolean authenticated) {
 		this.key = key;
 		this.authenticated = authenticated;

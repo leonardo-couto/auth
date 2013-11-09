@@ -1,9 +1,11 @@
 package com.bewkrop.auth.user;
 
+import java.util.List;
+
 public interface User {
 
 	public String key();
-	public String hash();
-	public String roles();
+	public Credential credential();
+	public List<String> roles();
 	
 }

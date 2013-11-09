@@ -2,7 +2,7 @@ package com.bewkrop.auth.web.filter;
 
 import javax.ws.rs.core.SecurityContext;
 
-import com.bewkrop.auth.user.Principal;
+import com.bewkrop.auth.jaas.Principal;
 
 public class AuthContext implements SecurityContext {
 	
@@ -19,12 +19,14 @@ public class AuthContext implements SecurityContext {
 
 	@Override
 	public boolean isUserInRole(String role) {
-		return this.user.inRole(role);
+		return false;
+//		return this.user.inRole(role);
 	}
 
 	@Override
 	public boolean isSecure() {
-		return this.user.isHttps();
+		return false;
+//		return this.user.isHttps();
 	}
 
 	@Override

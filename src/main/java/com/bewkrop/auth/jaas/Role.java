@@ -2,7 +2,7 @@ package com.bewkrop.auth.jaas;
 
 import java.security.Principal;
 
-public class Role implements Principal {
+class Role implements Principal {
 	
 	private final String role;
 	
